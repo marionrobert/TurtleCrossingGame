@@ -16,3 +16,8 @@ class Player(Turtle):
 
     def move(self):
         self.forward(20)
+
+    def reach_top(self):
+        if self.ycor() == FINISH_LINE_Y:
+            self.goto(STARTING_POSITION)
+            return True
