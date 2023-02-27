@@ -10,6 +10,7 @@ screen.tracer(0)
 
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkeypress(fun=player.move, key="Up")
@@ -29,9 +30,12 @@ while game_is_on:
     for car in car_manager.all_cars:
         if player.distance(car) < 20:
             game_is_on = False
+            scoreboard.game_over()
             print("You loose")
     if player.reach_top():
         car_manager.increase_move_distance()
+        scoreboard.increase_level()
+
 
 
 screen.exitonclick()
